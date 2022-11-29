@@ -15,11 +15,11 @@ npm run dev
 # append `-- --open` to open the page automatically
 ```
 
-### Android build
+### Mobile build
 ```sh
 npm run build
-npx cap sync android
-# Launch Android Studio and build
+npm run cap:sync
+# Launch Android Studio/Xcode and build
 ```
 
 ## Documentation

@@ -4,7 +4,11 @@ const config: CapacitorConfig = {
   appId: 'sg.edu.nyp.sit.jobeasy',
   appName: 'JobEasy',
   webDir: 'dist',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
+  plugins: {
+    "CapacitorHttp": {"enabled":  true},
+    
+  }
 };
 
 export default config;
