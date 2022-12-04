@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router'
 import { RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
-import About from '../views/About.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,12 +11,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     component: Home,
     // meta: { transition: 'slide-left' },
-  },
-  {
-    path: '/about',
-    component: About,
-    // meta: { transition: 'slide-right' },
-  },
+  }
 ]
 
 // https://vitejs.dev/guide/env-and-mode.html
