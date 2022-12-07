@@ -13,5 +13,4 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/vue'
-
 </script>
