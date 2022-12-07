@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router'
 import { RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
+import Translate from '../views/Translate.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -11,6 +12,10 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     component: Home,
     // meta: { transition: 'slide-left' },
+  },
+  {
+    path: '/translate',
+    component: Translate,
   }
 ]
 
