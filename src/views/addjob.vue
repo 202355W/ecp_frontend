@@ -76,10 +76,6 @@ import AWS from 'aws-sdk';
 import { upload } from './file-upload.fake.service'; 
 import { wait } from './utils';
 
-const s3 = new AWS.S3({
-accessKeyId: "AKIAW3U4AFVOADK5Y7F4",
-secretAccessKey: "PcZ26f0udcEjfKTDjjqQuTcrlDm1SF5aPr718V6u",
-})
 const fileReader = new FileReader();
 const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
 
