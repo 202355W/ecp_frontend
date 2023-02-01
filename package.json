@@ -9,8 +9,6 @@
     "ionic:serve": "npm run serve"
   },
   "dependencies": {
-    "@aws-sdk/client-comprehend": "^3.224.0",
-    "@aws-sdk/client-textract": "^3.224.0",
     "@capacitor-community/date-picker": "^0.2.3",
     "@capacitor/android": "4.5.0",
     "@capacitor/app": "4.1.1",
@@ -28,7 +26,6 @@
     "@ionic/vue": "^6.3.4",
     "@ionic/vue-router": "^6.3.4",
     "aws-sdk": "^2.1268.0",
-    "axios": "^1.2.1",
     "file-reader": "^1.1.1",
     "ionicons": "^6.0.3",
     "pinia": "^2.0.23",

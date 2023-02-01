@@ -3,6 +3,8 @@ import { RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import addjob from '../views/addjob.vue'
+import reviewjob from '../views/reviewjob.vue'
+import successjob from '../views/successjob.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -17,6 +19,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path:'/addjob',
     component: addjob,
+  },
+  {
+    path:'/reviewjob',
+    component: reviewjob,
+  },
+  {
+    path:'/successjob',
+    component: successjob,
   }
 ]
 
