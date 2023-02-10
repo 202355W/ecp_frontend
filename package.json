@@ -9,6 +9,9 @@
     "ionic:serve": "npm run serve"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.267.0",
+    "@aws-sdk/client-s3": "^3.267.0",
+    "@aws-sdk/lib-dynamodb": "^3.267.0",
     "@capacitor-community/date-picker": "^0.2.3",
     "@capacitor/android": "4.5.0",
     "@capacitor/app": "4.1.1",
@@ -25,11 +28,12 @@
     "@ionic/pwa-elements": "^3.1.1",
     "@ionic/vue": "^6.3.4",
     "@ionic/vue-router": "^6.3.4",
-    "aws-sdk": "^2.1268.0",
+    "aws-sdk": "^2.1311.0",
     "file-reader": "^1.1.1",
-    "ionicons": "^6.0.3",
+    "like-fs": "^3.5.0",
+    "path": "^0.12.7",
     "pinia": "^2.0.23",
-    "vue": "^3.2.41",
+    "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

@@ -1,5 +1,4 @@
 <template>
-  <NavBar />
 <div id="app">
 <div class="container" style="width:800px; margin:0 auto;">
   <!--UPLOAD-->
@@ -23,7 +22,7 @@
     </p>
     <ul class="list-unstyled">
       <li v-for="item in uploadedFiles">
-        <img :src="item.url" style="max-width:500px;" id="uploaded" class="img-responsive img-thumbnail" :alt="item.originalName">
+        <img :src="item.url" style="max-width:400px;" id="uploaded" class="img-responsive img-thumbnail" :alt="item.originalName">
       </li>
     </ul>
     {{ res }}
@@ -53,9 +52,7 @@
         </tr>
     </table>
     </div>
-    <a href="reviewjob">
-      <input class="block" type="submit" value="Digitalize" @click="">
-    </a>
+      <input class="block" type="submit" value="Digitalize" @click="filesUpload()">
   </div>
   <!--FAILED-->
   <div v-if="isFailed">
@@ -72,12 +69,45 @@
 <script>
 import { IonItem, IonList, IonSelect, IonSelectOption, toastController, IonRow, IonCol, IonButton, IonGrid } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import AWS from 'aws-sdk';
+import { S3Client } from "@aws-sdk/client-s3";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { upload } from './file-upload.fake.service'; 
 import { wait } from './utils';
 
 const fileReader = new FileReader();
+const configS3 = {
+    version: 'latest',
+    region: "us-east-1",
+     credentials: {
+         accessKeyId: "AKIAW3U4AFVOADK5Y7F4",
+         secretAccessKey: "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"
+     }
+};
+const s3Client = new S3Client( configS3 );
 const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
+
+function loadXHR(url) {
+return new Promise(function(resolve, reject) {
+  try {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.responseType = "blob";
+    xhr.onerror = function() {
+      reject("Network error.")
+    };
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        resolve(xhr.response)
+      } else {
+        reject("Loading error:" + xhr.statusText)
+      }
+    };
+    xhr.send();
+  } catch (err) {
+    reject(err.message)
+  }
+});
+}
 
 export default {
   name: 'app',
@@ -105,12 +135,19 @@ export default {
   },
   methods: {
     async filesUpload(){
-      let blob = await fetch("C:\Users\charl\Downloads\jobad.png").then(r => r.blob());
-      const uploadedImage = await s3.upload({
-      Bucket: "digitalize-textract",
-      Key: "name",
-      Body: blob,
-}).promise()
+      const src = this.uploadedFiles[0]
+      loadXHR(src.url).then(async function(blob) {
+          const uploaded_image = fileReader.result;
+          const uploadParams = {
+            Bucket: "digitalize-textract-output-2",
+            Key: src.originalName,
+            Body: blob
+          };
+          const command = new PutObjectCommand(uploadParams)
+      const result = await s3Client.send(command)
+      console.log("Success.", result);
+      window.location.href = '/reviewjob';
+      });
   },
 
     reset() {
