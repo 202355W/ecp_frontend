@@ -1,7 +1,8 @@
 <template>
   <ion-header>
     <ion-toolbar>
-      <ion-title>Header Toolbar</ion-title>
+      <ion-title slot="start"><a href="/"><img src="../assets/ezlogo.jpg" width="200"/></a></ion-title>
+      <ion-buttons slot="secondary"><ion-button><a href="/addjob">Create</a></ion-button></ion-buttons>
     </ion-toolbar>
   </ion-header>
 </template>
